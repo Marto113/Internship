@@ -6,7 +6,7 @@ class PhotoController {
         const { link, id, title, description } = req.body;
         try {
             await PhotoService.addPhoto(link, id, title, description);
-            res.status(201).send('Photo added successfully!');
+            res.status(200).send('Photo added successfully!');
         } catch (error) {
             res.status(500).send(`Error adding photo: ${error}`);
         }
