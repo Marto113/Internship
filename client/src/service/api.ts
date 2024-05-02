@@ -1,5 +1,3 @@
-import { idText } from "typescript";
-
 export interface ImagesData {
     id: number;
     link: string;
@@ -43,7 +41,7 @@ export const deleteImage = async (id: number) => {
 export const uploadImage = async (link: string, title: string, description: string) => {
     try {
         const data = {link, title, description};
-        const response = await  fetch(`http://localhost:4000/photos/`, {
+        const response = await fetch(`http://localhost:4000/photos/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -62,7 +60,7 @@ export const uploadImage = async (link: string, title: string, description: stri
 export const editImage = async (id: number, title: string, description: string ) => {
     try {
         const data = {title, description};
-        const response = await  fetch(`http://localhost:4000/photos/${id}`, {
+        const response = await fetch(`http://localhost:4000/photos/${id}`, {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,4 +74,17 @@ export const editImage = async (id: number, title: string, description: string )
     }
 
     return true;
+}
+
+export const searchImage = async (id: number) => {
+    try {
+        const response = await fetch(`http://localhost:4000/photos/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+    } catch (error){
+        console.error(error);
+    }
 }
